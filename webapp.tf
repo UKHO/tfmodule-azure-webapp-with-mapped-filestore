@@ -1,4 +1,5 @@
 resource "azurerm_linux_web_app" "webapp_service" {
+  provider            = azurerm.sub
   name                = var.name
   location            = var.location
   resource_group_name = var.resourcegroupname
@@ -10,11 +11,9 @@ resource "azurerm_linux_web_app" "webapp_service" {
     ftps_state = "Disabled"
 
     ip_restriction {
-      ip_address = var.ip_address_or_range
-    }
-
-    ip_restriction {
-      service_tag = "ApplicationInsightsAvailability"
+      ip_address                = var.restricted_ip_address_or_range
+      virtual_network_subnet_id = var.restricted_virtual_network_subnet_id
+      service_tag               = "ApplicationInsightsAvailability"
     }
 
     application_stack {
@@ -47,6 +46,7 @@ resource "azurerm_linux_web_app" "webapp_service" {
     "XDT_MicrosoftApplicationInsights_Mode"           = "recommended"
     "XDT_MicrosoftApplicationInsights_PreemptSdk"     = "disabled"
   }
+  
   sticky_settings {
     app_setting_names = [
       "APPINSIGHTS_INSTRUMENTATIONKEY",
@@ -66,7 +66,7 @@ resource "azurerm_linux_web_app" "webapp_service" {
     ]
   }
   lifecycle {
-    ignore_changes = [ tags ]
+    ignore_changes = [tags]
   }
 
 }

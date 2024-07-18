@@ -26,11 +26,15 @@ variable "service_owner" {
   type = string
 }
 
-variable "ip_address_or_range" {
+variable "restricted_ip_address_or_range" {
   description = "CIDR Notation for the known IP Address range"
 }
 
-variable "subnet_name_restriction" {
+variable "restricted_virtual_network_subnet_id" {
+  
+}
+
+variable "hosting_virtual_network_subnet_id" {
   
 }
 
