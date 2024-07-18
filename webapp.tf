@@ -21,7 +21,6 @@ resource "azurerm_linux_web_app" "webapp_service" {
       java_server_version = "9.0"
       java_version        = "17"
 
-      virtual_network_subnet_id = var.hosting_virtual_network_subnet_id
     }
   }
 
@@ -48,6 +47,8 @@ resource "azurerm_linux_web_app" "webapp_service" {
     "XDT_MicrosoftApplicationInsights_Mode"           = "recommended"
     "XDT_MicrosoftApplicationInsights_PreemptSdk"     = "disabled"
   }
+
+  virtual_network_subnet_id = var.hosting_virtual_network_subnet_id
 
   sticky_settings {
     app_setting_names = [
