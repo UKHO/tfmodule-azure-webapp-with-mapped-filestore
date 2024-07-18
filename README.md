@@ -1,4 +1,3 @@
-# terraform-module-template
-When you use this template it will add a basic main, variable and output file and a Readme.md file.
+# tfmodule-azure-webapp-with-mapped-filestore
 
-when you come to name your project I would suggest prefixing with `tfmodule-[Azure|AWS]-description-of-service`
+This module is intended to be used as a shared setup for anyone supporting applications needing a linux webapp hosting linux mapped to a filestore.
