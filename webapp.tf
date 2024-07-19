@@ -12,7 +12,6 @@ resource "azurerm_linux_web_app" "webapp_service" {
 
     ip_restriction {
       ip_address                = var.restricted_ip_address_or_range
-      virtual_network_subnet_id = var.restricted_virtual_network_subnet_id
       service_tag               = "ApplicationInsightsAvailability"
     }
 

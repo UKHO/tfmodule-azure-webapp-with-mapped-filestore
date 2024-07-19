@@ -1,5 +1,3 @@
-data "azurerm_client_config" "current" {}
-
 variable "location" {
   type    = string
   default = "UK South"
@@ -34,6 +32,5 @@ variable "restricted_virtual_network_subnet_id" {
 variable "hosting_virtual_network_subnet_id" {
 }
 
-locals {
-  tenant_id = data.azurerm_client_config.current.tenant_id
+variable "tenant_id" {
 }
