@@ -18,7 +18,7 @@ resource "azurerm_storage_account" "rooted_storage" {
 }
 
 resource "azurerm_storage_share_directory" "spool_share_directory" {
-  depends_on       = [azurerm_resource_group.rg, azurerm_storage_share.rooted_storage_fileshare]
+  depends_on       = [azurerm_resource_group.rg, azurerm_storage_account.rooted_storage_fileshare]
   provider         = azurerm.src
   name             = "spool"
   storage_share_id = azurerm_storage_share.rooted_storage_fileshare.id
