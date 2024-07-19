@@ -1,4 +1,5 @@
 resource "azurerm_linux_web_app" "webapp_service" {
+  depends_on          = [azurerm_resource_group.rg, azurerm_service_plan.app_service_plan, azurerm_storage_account.rooted_storage, azurerm_application_insights.app_insights]
   provider            = azurerm.src
   name                = var.name
   location            = var.location
@@ -11,7 +12,7 @@ resource "azurerm_linux_web_app" "webapp_service" {
     ftps_state = "Disabled"
 
     ip_restriction {
-      ip_address                = var.restricted_ip_address_or_range
+      ip_address = var.restricted_ip_address_or_range
     }
 
     application_stack {

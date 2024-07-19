@@ -1,4 +1,5 @@
 resource "azurerm_log_analytics_workspace" "logs_analytics_workspace" {
+  depends_on          = [azurerm_resource_group.rg]
   provider            = azurerm.src
   name                = "${var.name}-workspace"
   location            = var.location
@@ -11,6 +12,7 @@ resource "azurerm_log_analytics_workspace" "logs_analytics_workspace" {
 }
 
 resource "azurerm_application_insights" "app_insights" {
+  depends_on           = [azurerm_resource_group.rg, azurerm_log_analytics_workspace.logs_analytics_workspace]
   provider             = azurerm.src
   name                 = var.name
   location             = var.location
