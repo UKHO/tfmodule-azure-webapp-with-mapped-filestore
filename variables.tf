@@ -22,11 +22,6 @@ variable "environment" {
 
 variable "restricted_ip_address_or_range" {
   description = "CIDR Notation for the known IP Address range"
-  default = ""
-}
-
-variable "restricted_virtual_network_subnet_id" {
-  default = ""
 }
 
 variable "hosting_virtual_network_subnet_id" {
