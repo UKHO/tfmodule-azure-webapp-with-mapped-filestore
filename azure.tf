@@ -1,10 +1,5 @@
-terraform {
-  required_providers {
-    azurerm = {
-      source = "hashicorp/azurerm"
-      configuration_aliases = [
-        azurerm.src
-      ]
-    }
+provider "azurerm" {
+  features {
   }
+  alias = "src"
 }
