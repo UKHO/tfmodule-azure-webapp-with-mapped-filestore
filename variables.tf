@@ -24,11 +24,11 @@ variable "environment" {
 
 variable "restricted_ip_address_or_range" {
   description = "CIDR Notation for the known IP Address range"
-  default = []
+  default = ""
 }
 
 variable "restricted_virtual_network_subnet_id" {
-  default = []
+  default = ""
 }
 
 variable "hosting_virtual_network_subnet_id" {
