@@ -1,5 +1,5 @@
 resource "azurerm_storage_account" "rooted_storage" {
-  provider            = azurerm.sub
+  provider            = azurerm.src
   name                = replace("${var.name}sa", "-", "")
   location            = var.location
   resource_group_name = var.resourcegroupname
@@ -17,20 +17,20 @@ resource "azurerm_storage_account" "rooted_storage" {
 }
 
 resource "azurerm_storage_share_directory" "spool_share_directory" {
-  provider         = azurerm.sub
+  provider         = azurerm.src
   name             = "spool"
   storage_share_id = azurerm_storage_share.rooted_storage_fileshare.id
 }
 
 resource "azurerm_storage_share" "rooted_storage_fileshare" {
-  provider             = azurerm.sub
+  provider             = azurerm.src
   name                 = "workspaceroot"
   storage_account_name = azurerm_storage_account.rooted_storage.name
   quota                = 50
 }
 
 resource "azurerm_storage_share_directory" "workspaces_share_directory" {
-  provider         = azurerm.sub
+  provider         = azurerm.src
   name             = "workspaces"
   storage_share_id = azurerm_storage_share.rooted_storage_fileshare.id
 }

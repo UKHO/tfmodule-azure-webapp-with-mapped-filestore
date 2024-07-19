@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "rg" {
-  provider = azurerm.sub
+  provider = azurerm.src
   name     = var.resourcegroupname
   location = var.location
   lifecycle {

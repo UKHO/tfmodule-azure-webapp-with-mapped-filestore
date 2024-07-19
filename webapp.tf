@@ -1,5 +1,5 @@
 resource "azurerm_linux_web_app" "webapp_service" {
-  provider            = azurerm.sub
+  provider            = azurerm.src
   name                = var.name
   location            = var.location
   resource_group_name = var.resourcegroupname

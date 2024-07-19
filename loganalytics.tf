@@ -1,5 +1,5 @@
 resource "azurerm_log_analytics_workspace" "logs_analytics_workspace" {
-  provider            = azurerm.sub
+  provider            = azurerm.src
   name                = "${var.name}-workspace"
   location            = var.location
   resource_group_name = var.resourcegroupname
@@ -11,7 +11,7 @@ resource "azurerm_log_analytics_workspace" "logs_analytics_workspace" {
 }
 
 resource "azurerm_application_insights" "app_insights" {
-  provider             = azurerm.sub
+  provider             = azurerm.src
   name                 = var.name
   location             = var.location
   resource_group_name  = var.resourcegroupname

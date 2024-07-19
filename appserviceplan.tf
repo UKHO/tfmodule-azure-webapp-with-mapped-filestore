@@ -1,5 +1,5 @@
 resource "azurerm_service_plan" "app_service_plan" {
-  provider            = azurerm.sub
+  provider            = azurerm.src
   name                = "${var.name}-asp"
   location            = var.location
   resource_group_name = var.resourcegroupname
