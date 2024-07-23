@@ -11,17 +11,17 @@ resource "azurerm_linux_web_app" "webapp_service" {
     always_on  = true
     ftps_state = "Disabled"
 
-    dynamic "restricted_by_ip" {
+    dynamic "ip_restriction" {
       for_each = toset(var.restricted_ip_address_or_range)
-      ip_restriction {
-        ip_address = each.key
+      content {
+        ip_address = ip_restriction.key
       }
     }
 
-    dynamic "restricted_by_subnet" {
+    dynamic "ip_restriction" {
       for_each = toset(var.restricted_subnet_id)
-      ip_restriction {
-        virtual_network_subnet_id = each.key
+      content {
+        virtual_network_subnet_id = ip_restriction.key
       }
     }
 
