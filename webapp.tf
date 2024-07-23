@@ -15,7 +15,7 @@ resource "azurerm_linux_web_app" "webapp_service" {
       ip_address = var.restricted_ip_address_or_range
     }
 
-    ip_restriction_default_action = "DENY"
+    ip_restriction_default_action = "Deny"
 
     application_stack {
       java_server         = "TOMCAT"
