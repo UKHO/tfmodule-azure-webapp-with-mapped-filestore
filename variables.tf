@@ -21,7 +21,17 @@ variable "environment" {
 }
 
 variable "restricted_ip_address_or_range" {
-  description = "CIDR Notation for the known IP Address range"
+  description = "An Array of CIDR Notation for the known IP Address range"
+  default = []
+}
+
+variable "restricted_subnet_id" {
+  description = "An array of subnet resource id"
+  default = []
+}
+
+variable "restricted_default_action" {
+  default = "Deny"
 }
 
 variable "hosting_virtual_network_subnet_id" {

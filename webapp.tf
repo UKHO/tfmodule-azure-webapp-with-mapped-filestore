@@ -11,11 +11,22 @@ resource "azurerm_linux_web_app" "webapp_service" {
     always_on  = true
     ftps_state = "Disabled"
 
-    ip_restriction {
-      ip_address = var.restricted_ip_address_or_range
+    dynamic "ip_restriction" {
+      for_each = toset(var.restricted_ip_address_or_range)
+      content {
+        ip_address = ip_restriction.key
+      }
     }
 
-    ip_restriction_default_action = "Deny"
+    dynamic "ip_restriction" {
+      for_each = toset(var.restricted_subnet_id)
+      content {
+        virtual_network_subnet_id = ip_restriction.key
+      }
+    }
+
+
+    ip_restriction_default_action = var.restricted_default_action
 
     application_stack {
       java_server         = "TOMCAT"
