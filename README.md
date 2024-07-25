@@ -29,11 +29,11 @@ terraform {
 }
 
 module "site" {
-  source                            = "github.com/UKHO/tfmodule-azure-webapp-with-mapped-filestore?ref=v0.1.0"
+  source                            = "github.com/UKHO/tfmodule-azure-webapp-with-mapped-filestore?ref=v0.3.0"
   name                              = "WEBAPP_NAME"
   environment                       = "ENVIRONMENT (DEV|QA|LIVE)"
   resourcegroupname                 = "WEBAPP_RG_NAME"
-  hosting_virtual_network_subnet_id = ["SUBNET_RESOURCE_ID"]
+  hosting_virtual_network_subnet_id = "SUBNET_RESOURCE_ID"
   tenant_id                         = "TENANT_ID"
   #optional values for restrtion
   # be aware default restricted_default_action and restricted_scm_default_action are Deny
