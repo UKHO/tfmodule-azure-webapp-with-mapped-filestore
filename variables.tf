@@ -34,6 +34,20 @@ variable "restricted_default_action" {
   default = "Deny"
 }
 
+variable "restricted_scm_ip_address_or_range" {
+  description = "An Array of CIDR Notation for the known IP Address range"
+  default = []
+}
+
+variable "restricted_scm_subnet_id" {
+  description = "An array of subnet resource id"
+  default = []
+}
+
+variable "restricted_scm_default_action" {
+  default = "Deny"
+}
+
 variable "hosting_virtual_network_subnet_id" {
 }
 

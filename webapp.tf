@@ -25,8 +25,23 @@ resource "azurerm_linux_web_app" "webapp_service" {
       }
     }
 
-
     ip_restriction_default_action = var.restricted_default_action
+
+    dynamic "scm_ip_restriction" {
+      for_each = toset(var.restricted_scm_ip_address_or_range)
+      content {
+        ip_address = scm_ip_restriction.key
+      }
+    }
+
+    dynamic "scm_ip_restriction" {
+      for_each = toset(var.restricted_scm_subnet_id)
+      content {
+        virtual_network_subnet_id = scm_ip_restriction.key
+      }
+    }
+
+    scm_ip_restriction_default_action = var.restricted_scm_default_action
 
     application_stack {
       java_server         = "TOMCAT"
